@@ -1,0 +1,26 @@
+{
+  "name": "roster-generator",
+  "version": "0.0.1",
+  "description": "A command-line application that prompts the user for information about the team manager, members, then generates a roster in HTML.",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phaggio/roster-generator.git"
+  },
+  "author": "Richard Wang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/phaggio/roster-generator/issues"
+  },
+  "homepage": "https://github.com/phaggio/roster-generator#readme",
+  "dependencies": {
+    "inquirer": "^7.0.4",
+    "jest": "^25.1.0"
+  }
+}
