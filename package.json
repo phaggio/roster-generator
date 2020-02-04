@@ -3,11 +3,8 @@
   "version": "0.0.1",
   "description": "A command-line application that prompts the user for information about the team manager, members, then generates a roster in HTML.",
   "main": "app.js",
-  "directories": {
-    "test": "test"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
