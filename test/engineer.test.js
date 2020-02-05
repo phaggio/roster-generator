@@ -1,11 +1,21 @@
-'use strict'
+'use strict';
 
-const Engineer = require(`../lib/Engineer`);
+const Engineer = require('../lib/Engineer');
 
-describe(`Engineer class`, () => {
-    it(`should ...`, () => {
+test('Can set GitHUb account via constructor', () => {
+  const testValue = 'GitHubUser';
+  const engineer = new Engineer('Foo', 1, 'test@test.com', testValue);
+  expect(engineer.github).toBe(testValue);
+});
 
+test('getRole() should return "Engineer"', () => {
+  const testValue = 'Engineer';
+  const engineer = new Engineer('Foo', 1, 'test@test.com', 'GitHubUser');
+  expect(engineer.getRole()).toBe(testValue);
+});
 
-        expect(' ').toEqual(' ');
-    });
+test('Can get GitHub username via getGithub()', () => {
+  const testValue = 'GitHubUser';
+  const engineer = new Engineer('Foo', 1, 'test@test.com', testValue);
+  expect(engineer.getGithub()).toBe(testValue);
 });
