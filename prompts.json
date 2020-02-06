@@ -51,6 +51,16 @@
                 "No"
             ]
         },
+        "teamName": {
+            "type": "input",
+            "name": "teamName",
+            "message": "What is the name of your team?"
+        },
+        "fileName": {
+            "type": "input",
+            "name": "fileName",
+            "message": "Please enter name for the HTML file:"
+        },
         "openFile": {
             "type": "list",
             "name": "open",

@@ -2,6 +2,7 @@
 console.clear();
 
 const inquirer = require('inquirer');
+const open = require('open');
 const fs = require('fs');
 const util = require('util');
 const prompts = require('./prompts');
@@ -11,7 +12,6 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
-const readFileAsync = util.promisify(fs.readFile);
 const writeFileAsync = util.promisify(fs.writeFile);
 
 async function addMoreEmployee() {
@@ -38,6 +38,17 @@ async function getEmployeeObj() {
     };
 };
 
+async function getTeamName() {
+    return await inquirer.prompt(prompts[0].teamName);
+};
+
+async function getFileName() {
+    return await inquirer.prompt(prompts[0].fileName);
+}
+
+async function openFile() {
+    
+}
 
 
 async function init() {
@@ -46,17 +57,21 @@ async function init() {
     while (addEmployee) {
         employeeObjArr.push(await getEmployeeObj());
         addEmployee = await addMoreEmployee();
-    }
-    // const employee = await getUserInput();
+    };
+
     let employeeHtml = '';
     for (const employee of employeeObjArr) {
         employeeHtml += generateCardHtml(employee);;
     };
 
-    const teamHtml = generateHtml(employeeHtml, `Richard's team`);
-    console.log(teamHtml);
+    const teamNameObj = await getTeamName();
+    const teamHtml = generateHtml(employeeHtml, teamNameObj.teamName);
 
-    writeFileAsync(`./output/RichardTeam.html`, teamHtml);
+    const fileNameObj = await getFileName();
+
+    await writeFileAsync(`./output/${fileNameObj.fileName}.html`, teamHtml);
+    console.log('Finished creating HTML file!');
+
 
     // const employeeCard = cardHtml.generateCardHtml(employee);
     // console.log(employeeCard);
@@ -64,7 +79,6 @@ async function init() {
     // console.log(employeeObjArr);
 
 };
-
 
 
 init();
