@@ -1,3 +1,7 @@
+'use strict'
+
+const generateHtml = (cards, teamName) => {
+    return `
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>${teamName}</title>
 
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -20,50 +24,13 @@
 <body style="font-family: 'Roboto', sans-serif;">
     <nav class="navbar navbar-dark bg-dark">
         <div class="navbar-brand mx-auto">
-            <div class="display-4">My Team</div>
+            <div class="display-4">${teamName}</div>
         </div>
     </nav>
     <div class="container">
         <div class="row d-flex justify-content-center">
 
-            <div class="card text-white bg-primary m-3" style="width: 20rem;">
-                <div class="card-header"><span class="m-1"><i class="fas fa-user-tie fa-fw"></i></span>Manager</div>
-                <div class="card-body">
-                    <h5 class="card-title">Richard Wang</h5>
-                    <div class="card-text">
-                        <p>ID: 123</p>
-                        <p>Email: richard@outlook.com</p>
-                        <p>Office Number: 123</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card text-white bg-primary m-3" style="width: 20rem;">
-                <div class="card-header"><span class="m-1"><i class="fas fa-user-graduate fa-fw"></i></span>Intern</div>
-                <div class="card-body">
-                    <h5 class="card-title">Richard Wang</h5>
-                    <div class="card-text">
-                        <p>ID: 123</p>
-                        <p>Email: richard@outlook.com</p>
-                        <p>School: XXX</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card text-white bg-primary m-3" style="width: 20rem;">
-                <div class="card-header"><span class="m-1"><i class="fas fa-user-astronaut fa-fw"></i></span>Engineer
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Richard Wang</h5>
-                    <div class="card-text">
-                        <p>ID: 123</p>
-                        <p>Email: richard@outlook.com</p>
-                        <p>GitHub: phaggio</p>
-                    </div>
-                </div>
-            </div>
-
-
+            ${cards}
 
         </div>
     </div> <!-- end of container -->
@@ -80,3 +47,7 @@
 </body>
 
 </html>
+`
+};
+
+module.exports = generateHtml;
