@@ -1,0 +1,64 @@
+[
+    {
+        "basicQuestions": [
+            {
+                "type": "input",
+                "name": "name",
+                "message": "What is employee's name?"
+            },
+            {
+                "type": "input",
+                "name": "id",
+                "message": "What is employee's ID?"
+            },
+            {
+                "type": "input",
+                "name": "email",
+                "message": "What is employee's email?"
+            },
+            {
+                "type": "list",
+                "name": "role",
+                "message": "What is employee's role?",
+                "choices": [
+                    "Engineer",
+                    "Manager",
+                    "Intern"
+                ]
+            }
+        ],
+        "Engineer": {
+            "type": "input",
+            "name": "github",
+            "message": "What is the engineer's github ID?"
+        },
+        "Manager": {
+            "type": "input",
+            "name": "officeNumber",
+            "message": "What is the manager's office number?"
+        },
+        "Intern": {
+            "type": "input",
+            "name": "school",
+            "message": "What is the name of intern's school?"
+        },
+        "addMore": {
+            "type": "list",
+            "name": "addMore",
+            "message": "Add another employee?",
+            "choices": [
+                "Yes",
+                "No"
+            ]
+        },
+        "openFile": {
+            "type": "list",
+            "name": "open",
+            "message": "Open the html file?",
+            "choices": [
+                "Yes",
+                "No"
+            ]
+        }
+    }
+]
