@@ -25,24 +25,39 @@ async function addMoreEmployee() {
 };
 
 async function getEmployeeObj() {
-    let validInput = false;
-    let employeeInput;
-    while (!validInput) {
-        employeeInput = await inquirer.prompt(prompts[0].basicQuestions);
-        validInput = functions.validateEmployeeInput(employeeInput);
-        if (!validInput) {
-            console.log('Invalid input, please enter employee information again');
+    let validName = false;
+    let employeeName;
+    while (!validName) {
+        employeeName = await inquirer.prompt(prompts[0].employeeName);
+        validName = functions.validateEmployeeInput(employeeName);
+        if (!validName) {
+            console.log('Invalid employee name! Please enter employee name again.');
         };
     };
+
+    const employeeId = await inquirer.prompt(prompts[0].id);
     
-    const roleSpecificInput = await inquirer.prompt(prompts[0][`${employeeInput.role}`]);
-    switch (employeeInput.role) {
+    let validEmail = false;
+    let employeeEmail;
+    while (!validEmail) {
+        employeeEmail = await inquirer.prompt(prompts[0].email);
+        validEmail = functions.checkEmail(employeeEmail);
+        if (!validEmail) {
+            console.log('Invalid employee email! Please enter employee email again.');
+        };
+    };
+
+    const employeeRole = await inquirer.prompt(prompts[0].role);
+
+    const roleSpecificInput = await inquirer.prompt(prompts[0][`${employeeRole.role}`]);
+
+    switch (employeeRole.role) {
         case `Manager`:
-            return new Manager(employeeInput.name, employeeInput.id, employeeInput.email, roleSpecificInput.officeNumber);
+            return new Manager(employeeName.name, employeeId.id, employeeEmail.email, roleSpecificInput.officeNumber);
         case `Engineer`:
-            return new Engineer(employeeInput.name, employeeInput.id, employeeInput.email, roleSpecificInput.github);
+            return new Engineer(employeeName.name, employeeId.id, employeeEmail.email, roleSpecificInput.github);
         case `Intern`:
-            return new Intern(employeeInput.name, employeeInput.id, employeeInput.email, roleSpecificInput.school);
+            return new Intern(employeeName.name, employeeId.id, employeeEmail.email, roleSpecificInput.school);
         default:
             return;
     };

@@ -27,6 +27,31 @@
                 ]
             }
         ],
+        "employeeName": {
+            "type": "input",
+            "name": "name",
+            "message": "What is employee's name?"
+        },
+        "id": {
+            "type": "input",
+            "name": "id",
+            "message": "What is employee's ID?"
+        },
+        "email": {
+            "type": "input",
+            "name": "email",
+            "message": "What is employee's email?"
+        },
+        "role": {
+            "type": "list",
+            "name": "role",
+            "message": "What is employee's role?",
+            "choices": [
+                "Engineer",
+                "Manager",
+                "Intern"
+            ]
+        },
         "Engineer": {
             "type": "input",
             "name": "github",
