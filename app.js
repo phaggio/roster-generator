@@ -46,7 +46,7 @@ async function getFileName() {
     return await inquirer.prompt(prompts[0].fileName);
 }
 
-async function openFile() {
+async function getOpenFileRes() {
     return await inquirer.prompt(prompts[0].openFile);
 };
 
@@ -72,12 +72,13 @@ async function init() {
     await writeFileAsync(`./output/${fileNameObj.fileName}.html`, teamHtml);
     console.log('Finished creating HTML file!');
 
-    const openResObj = await openFile();
+    const openFileResObj = await getOpenFileRes();
 
-    if (openResObj.open === "Yes") {
+    if (openFileResObj.open === "Yes") {
         console.log(`Opening ${fileNameObj.fileName}.html ...`);
         open(`./output/${fileNameObj.fileName}.html`);
     };
+
     process.exit();
 
 };
