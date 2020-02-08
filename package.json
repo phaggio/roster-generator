@@ -4,7 +4,8 @@
   "description": "A command-line application that prompts the user for information about the team manager, members, then generates a roster in HTML.",
   "main": "app.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "app": "node app.js"
   },
   "repository": {
     "type": "git",
