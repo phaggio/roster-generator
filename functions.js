@@ -17,6 +17,22 @@ const validateEmployeeInput = (employeeInput) => {
     };
 };
 
+const checkEmail = (email) => {
+    const email = email.email;
+    if (typeof email !== 'string' || !email.trim().length) {
+        return false;
+    } else if (email.length < 2) {
+        return false;
+    } else if (!email.includes('@')) {
+        return false;
+    } else if (!regex.test(email)) {
+        return false;
+    } else if (email.indexOf('@') === 0 || email.lastIndexOf('@') === (email.length - 1)) {
+        return false;
+    };
+    return true;
+};
+
 const checkGithubId = (roleSpecificInput) => {
     const regex = /^[0-9a-zA-Z-]+$/;
     const repeatedHyphen = /--+/;
@@ -40,5 +56,6 @@ const checkGithubId = (roleSpecificInput) => {
 
 module.exports = {
     validateEmployeeInput,
+    checkEmail,
     checkGithubId
 }
