@@ -8,6 +8,7 @@ const util = require('util');
 const prompts = require('./prompts');
 const generateHtml = require('./template');
 const generateCardHtml = require('./card');
+const functions = require('./functions');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
@@ -24,7 +25,16 @@ async function addMoreEmployee() {
 };
 
 async function getEmployeeObj() {
-    const employeeInput = await inquirer.prompt(prompts[0].basicQuestions);
+    let validInput = false;
+    let employeeInput;
+    while (!validInput) {
+        employeeInput = await inquirer.prompt(prompts[0].basicQuestions);
+        validInput = functions.validateEmployeeInput(employeeInput);
+        if (!validInput) {
+            console.log('Invalid input, please enter employee information again');
+        };
+    };
+    
     const roleSpecificInput = await inquirer.prompt(prompts[0][`${employeeInput.role}`]);
     switch (employeeInput.role) {
         case `Manager`:
