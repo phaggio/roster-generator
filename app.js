@@ -24,37 +24,53 @@ async function addMoreEmployee() {
     };
 };
 
-async function getEmployeeObj() {
+async function getEmployeeName() {
     let validName = false;
-    let employeeName;
     while (!validName) {
-        employeeName = await inquirer.prompt(prompts[0].employeeName);
+        const employeeName = await inquirer.prompt(prompts[0].employeeName);
         validName = functions.validateEmployeeName(employeeName);
         if (!validName) {
             console.log('Invalid employee name! Please enter employee name again.');
+        } else {
+            return employeeName;
         };
     };
+};
 
+async function getEmployeeId() {
     let validId = false;
-    let employeeId;
     while (!validId) {
-        employeeId = await inquirer.prompt(prompts[0].id);
+        const employeeId = await inquirer.prompt(prompts[0].id);
         validId = await functions.checkId(employeeId);
         if (!validId) {
-            console.log('Invalid employee ID! Please enter employee ID again.');
+            console.log('Invalid employee ID! Please enter employee ID again!');
+        } else {
+            return employeeId;
         };
     };
+};
 
+async function getEmployeeEmail() {
     let validEmail = false;
-    let employeeEmail;
-    while (!validEmail) {
-        employeeEmail = await inquirer.prompt(prompts[0].email);
+    while(!validEmail) {
+        const employeeEmail = await inquirer.prompt(prompts[0].email);
         validEmail = functions.checkEmail(employeeEmail);
         if (!validEmail) {
-            console.log('Invalid employee email! Please enter employee email again.');
+            console.log(`Invalid employee email! Please enter employee's email again.`);
+        } else {
+            return employeeEmail;
         };
     };
+};
 
+async function getRoleSpecificData() {
+    
+}
+
+async function getEmployeeObj() {
+    const employeeName = await getEmployeeName();
+    const employeeId = await getEmployeeId();
+    const employeeEmail = await getEmployeeEmail();
     const employeeRole = await inquirer.prompt(prompts[0].role);
 
     const roleSpecificInput = await inquirer.prompt(prompts[0][`${employeeRole.role}`]);

@@ -8,7 +8,7 @@
         "id": {
             "type": "input",
             "name": "id",
-            "message": "What is employee's ID (alphabetic character and numbers only)?"
+            "message": "What is employee's ID (alphanumeric characters only)?"
         },
         "email": {
             "type": "input",
