@@ -79,6 +79,7 @@ You may also input the command `npm run test` in the terminal to see the tests
 
 ## CSS Frameworks
 * Bootstrap
+* Font Awesome
 
 ## Node.js Modules
 * inquirer
