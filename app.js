@@ -29,14 +29,22 @@ async function getEmployeeObj() {
     let employeeName;
     while (!validName) {
         employeeName = await inquirer.prompt(prompts[0].employeeName);
-        validName = functions.validateEmployeeInput(employeeName);
+        validName = functions.validateEmployeeName(employeeName);
         if (!validName) {
             console.log('Invalid employee name! Please enter employee name again.');
         };
     };
 
-    const employeeId = await inquirer.prompt(prompts[0].id);
-    
+    let validId = false;
+    let employeeId;
+    while (!validId) {
+        employeeId = await inquirer.prompt(prompts[0].id);
+        validId = await functions.checkId(employeeId);
+        if (!validId) {
+            console.log('Invalid employee ID! Please enter employee ID again.');
+        };
+    };
+
     let validEmail = false;
     let employeeEmail;
     while (!validEmail) {
@@ -64,7 +72,18 @@ async function getEmployeeObj() {
 };
 
 async function getTeamName() {
-    return await inquirer.prompt(prompts[0].teamName);
+    let validTeamName = false;
+    let validTeamNameObj;
+    while (!validTeamName) {
+        const teamNameObj = await inquirer.prompt(prompts[0].teamName);
+        if (!functions.checkTeamName(teamNameObj)) {
+            console.log("Please enter a valid team name");
+        } else {
+            validTeamName = true;
+            validTeamNameObj = teamNameObj;
+        };
+    };
+    return validTeamNameObj;
 };
 
 async function getFileName() {

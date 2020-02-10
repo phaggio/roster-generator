@@ -1,41 +1,14 @@
 [
     {
-        "basicQuestions": [
-            {
-                "type": "input",
-                "name": "name",
-                "message": "What is employee's name?"
-            },
-            {
-                "type": "input",
-                "name": "id",
-                "message": "What is employee's ID?"
-            },
-            {
-                "type": "input",
-                "name": "email",
-                "message": "What is employee's email?"
-            },
-            {
-                "type": "list",
-                "name": "role",
-                "message": "What is employee's role?",
-                "choices": [
-                    "Engineer",
-                    "Manager",
-                    "Intern"
-                ]
-            }
-        ],
         "employeeName": {
             "type": "input",
             "name": "name",
-            "message": "What is employee's name?"
+            "message": "What is employee's name? (cannot include numbers)"
         },
         "id": {
             "type": "input",
             "name": "id",
-            "message": "What is employee's ID?"
+            "message": "What is employee's ID (alphabetic character and numbers only)?"
         },
         "email": {
             "type": "input",
@@ -79,7 +52,7 @@
         "teamName": {
             "type": "input",
             "name": "teamName",
-            "message": "What is the name of your team?"
+            "message": "What is the name of your team? (Cannot be empty)"
         },
         "fileName": {
             "type": "input",
