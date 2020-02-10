@@ -41,11 +41,24 @@ const checkId = (idObj) => {
     return true;
 };
 
-// checkGithubId is not being used at this time
-const checkGithubId = (roleSpecificInput) => {
+const checkOfficeNumber = (officeNumberObj) => {
+    let officeNumber = officeNumberObj.officeNumber;
+    const regex = /^[0-9]+$/;
+    if (officeNumber === undefined) {
+        return false;
+    } else if (officeNumber.length !== 10) {
+        return false;
+    } else if (!regex.test(officeNumber)) {
+        return false;
+    };
+    return true;
+};
+
+
+const checkGithubObj = (githubObj) => {
     const regex = /^[0-9a-zA-Z-]+$/;
     const repeatedHyphen = /--+/;
-    const username = roleSpecificInput.github;
+    const username = githubObj.github;
     if (typeof username !== 'string' || !username.trim().length) {
         return false;
     } else if (username.length < 4) {
@@ -61,6 +74,15 @@ const checkGithubId = (roleSpecificInput) => {
     };
     return true;
 };
+
+const checkSchool = (schoolObj) => {
+    const school = schoolObj.school;
+    if (!school.trim()) {
+        return false;
+    };
+    return true;
+};
+
 
 const checkTeamName = (teamNameObj) => {
     let teamName = teamNameObj.teamName;
@@ -78,6 +100,8 @@ module.exports = {
     validateEmployeeName,
     checkEmail,
     checkId,
-    checkGithubId,
+    checkOfficeNumber,
+    checkGithubObj,
+    checkSchool,
     checkTeamName
 }

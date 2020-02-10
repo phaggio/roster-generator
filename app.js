@@ -52,7 +52,7 @@ async function getEmployeeId() {
 
 async function getEmployeeEmail() {
     let validEmail = false;
-    while(!validEmail) {
+    while (!validEmail) {
         const employeeEmail = await inquirer.prompt(prompts[0].email);
         validEmail = functions.checkEmail(employeeEmail);
         if (!validEmail) {
@@ -63,18 +63,44 @@ async function getEmployeeEmail() {
     };
 };
 
-async function getRoleSpecificData() {
-    
-}
+async function getRoleSpecificData(role) {
+    let validResponse = false;
+    let roleSpecificObj;
+    while (!validResponse) {
+        roleSpecificObj = await inquirer.prompt(prompts[0][`${role}`]);
+        switch (role) {
+            case 'Manager':
+                validResponse = functions.checkOfficeNumber(roleSpecificObj);
+                console.log(validResponse);
+                if (!validResponse) {
+                    console.log(`Invalid office number for manager, please enter a valid phone number...`);
+                }
+                break;
+            case 'Engineer':
+                validResponse = functions.checkGithubObj(roleSpecificObj);
+                console.log(validResponse);
+                if (!validResponse) {
+                    console.log(`Invalid github user ID, please enter a valid ID.`);
+                }
+                break;
+            case 'Intern':
+                validResponse = functions.checkSchool(roleSpecificObj);
+                console.log(validResponse);
+                if (!validResponse) {
+                    console.log(`School cannot be empty, please enter intern's school.`);
+                };
+                break;
+        };
+    };
+    return roleSpecificObj;
+};
 
 async function getEmployeeObj() {
     const employeeName = await getEmployeeName();
     const employeeId = await getEmployeeId();
     const employeeEmail = await getEmployeeEmail();
     const employeeRole = await inquirer.prompt(prompts[0].role);
-
-    const roleSpecificInput = await inquirer.prompt(prompts[0][`${employeeRole.role}`]);
-
+    const roleSpecificInput = await getRoleSpecificData(employeeRole.role);
     switch (employeeRole.role) {
         case `Manager`:
             return new Manager(employeeName.name, employeeId.id, employeeEmail.email, roleSpecificInput.officeNumber);
@@ -83,7 +109,7 @@ async function getEmployeeObj() {
         case `Intern`:
             return new Intern(employeeName.name, employeeId.id, employeeEmail.email, roleSpecificInput.school);
         default:
-            return;
+            break;
     };
 };
 

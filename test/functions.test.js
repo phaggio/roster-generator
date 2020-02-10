@@ -26,6 +26,7 @@ describe(`validateEmployeeName()`, () => {
     });
 })
 
+
 describe(`checkEmail()`, () => {
     test(`email should not be empoty`, () => {
         const employeeInputObj = { name: 'Richard', email: '' };
@@ -71,6 +72,7 @@ describe(`checkEmail()`, () => {
     });
 });
 
+
 describe(`checkId()`, () => {
     test(`ID should not be empoty`, () => {
         const employeeInputObj = { id: '' };
@@ -102,46 +104,90 @@ describe(`checkId()`, () => {
     });
 });
 
+
+describe(`checkOfficeNumber()`, () => {
+    test(`Office number should not be empty`, () => {
+        const officeNumberObj = { officeNumber: '' };
+
+        const cb = functions.checkOfficeNumber(officeNumberObj);
+
+        expect(cb).toBeFalsy();
+    });
+    test(`Office number should only contain numeric characters`, () => {
+        const officeNumberObj = { officeNumber: 'abc1234567' };
+
+        const cb = functions.checkOfficeNumber(officeNumberObj);
+
+        expect(cb).toBeFalsy();
+    });
+    test(`Office number should have exactly 10 numbers (area code + phone number)`, () => {
+        const officeNumberObj = { officeNumber: '12345678901' };
+
+        const cb = functions.checkOfficeNumber(officeNumberObj);
+
+        expect(cb).toBeFalsy();
+    });
+    test(`Office number should accept a 10 digit phone numbers`, () => {
+        const officeNumberObj = { officeNumber: '1234567890' };
+
+        const cb = functions.checkOfficeNumber(officeNumberObj);
+
+        expect(cb).toBeTruthy();
+    });
+});
+
+
 describe(`github ID`, () => {
     test('Github ID should not be empty', () => {
         const obj = { github: '' };
 
-        const cb = functions.checkGithubId(obj);
+        const cb = functions.checkGithubObj(obj);
 
         expect(cb).toBeFalsy();
     });
     test('Github ID should not be just space', () => {
         const obj = { github: '   ' };
 
-        const cb = functions.checkGithubId(obj);
+        const cb = functions.checkGithubObj(obj);
 
         expect(cb).toBeFalsy();
     });
     test('Github ID should not have multiple hyphens in a sequence', () => {
         const obj = { github: 'phaggio--123' };
 
-        const cb = functions.checkGithubId(obj);
+        const cb = functions.checkGithubObj(obj);
 
         expect(cb).toBeFalsy();
     });
     test('Github ID should not start with hyphen', () => {
         const obj = { github: '-phaggio' };
 
-        const cb = functions.checkGithubId(obj);
+        const cb = functions.checkGithubObj(obj);
 
         expect(cb).toBeFalsy();
     });
     test('Github ID should not end with hyphen', () => {
         const obj = { github: 'phaggio-' };
 
-        const cb = functions.checkGithubId(obj);
+        const cb = functions.checkGithubObj(obj);
 
         expect(cb).toBeFalsy();
     });
     test('Github ID should not have fewer than 4 characters', () => {
         const obj = { github: 'ph' };
 
-        const cb = functions.checkGithubId(obj);
+        const cb = functions.checkGithubObj(obj);
+
+        expect(cb).toBeFalsy();
+    });
+});
+
+
+describe(`checkSchool()`, () => {
+    test(`School name should not be empty`, () => {
+        const schoolObj = {school: ''};
+
+        const cb = functions.checkSchool(schoolObj);
 
         expect(cb).toBeFalsy();
     });

@@ -66,6 +66,9 @@ User's inputs are tested to ensure they meet the following requirement:
 * employee name cannot be empty and cannot contain numbers
 * employee ID cannot be empty, cannot contain any special characters, and it has to be one continuous string (no space between)
 * employee's email will need to be in a valid e-mail format (sample@sample.com)
+* if employee's role is manager, office number takes exactly 10 numeric characters
+* if employee's role is engineer, a valid github ID format is required (at least 4 characters long, may not start or end with hyphen, etc.)
+* if employee's role is intern, a school name must be provided (can't not be empty)
 * team's name cannot be empty
 
 You may also input the command `npm run test` in the terminal to see the tests
