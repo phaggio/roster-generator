@@ -13,7 +13,7 @@ A command-line application that prompts the user for information about the team 
     ![img](https://github.com/phaggio/roster-generator/blob/master/images/01.png?raw=true)
 
 1. the app starts by asking employee's name
-<img src="https://github.com/phaggio/roster-generator/blob/master/images/02.png?raw=true" alt="01" style="width: 50%;">
+<img src="https://github.com/phaggio/roster-generator/blob/master/images/02.png?raw=true" alt="01" style="width: 200px;">
 
 1. then the app prompts user for that employee's ID
 <img src="https://github.com/phaggio/roster-generator/blob/master/images/03.png?raw=true" alt="01" style="width: 50%;">
