@@ -8,7 +8,7 @@ const util = require('util');
 const prompts = require('./prompts');
 const generateHtml = require('./template');
 const generateCardHtml = require('./card');
-const functions = require('./functions');
+const functions = require('./validationFunctions');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
@@ -133,7 +133,6 @@ async function getOpenFileRes() {
     return await inquirer.prompt(prompts[0].openFile);
 };
 
-
 async function init() {
     let addEmployee = true;
     let employeeObjArr = [];
@@ -167,7 +166,6 @@ async function init() {
     };
 
     process.exit();
-
 };
 
 

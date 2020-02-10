@@ -1,13 +1,13 @@
 # roster-generator
 
 ## Table of contents
-
 - [Overview](#overview)
 - [Instruction](#instruction)
 - [User Input Criterion](#user-input-criterion)
 - [Technologies](#technologies)
 - [CSS Frameworks](#css-frameworks)
 - [Node.js Modules](#node.js-modules)
+- [Contributing](#contributing)
 
 
 ## Overview
@@ -84,3 +84,8 @@ You may also input the command `npm run test` in the terminal to see the tests
 * inquirer
 * jest
 * open
+
+## Contributing
+If you like to contribute, please fork the repository and use a feature branch. Pull requests are warmly welcome.
+
+

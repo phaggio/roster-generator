@@ -1,6 +1,6 @@
 'use strict'
 
-const functions = require('../functions');
+const functions = require('../validationFunctions');
 
 describe(`validateEmployeeName()`, () => {
     test('Employee name should not contain any number', () => {
