@@ -71,21 +71,18 @@ async function getRoleSpecificData(role) {
         switch (role) {
             case 'Manager':
                 validResponse = functions.checkOfficeNumber(roleSpecificObj);
-                console.log(validResponse);
                 if (!validResponse) {
                     console.log(`Invalid office number for manager, please enter a valid phone number...`);
                 }
                 break;
             case 'Engineer':
                 validResponse = functions.checkGithubObj(roleSpecificObj);
-                console.log(validResponse);
                 if (!validResponse) {
                     console.log(`Invalid github user ID, please enter a valid ID.`);
                 }
                 break;
             case 'Intern':
                 validResponse = functions.checkSchool(roleSpecificObj);
-                console.log(validResponse);
                 if (!validResponse) {
                     console.log(`School cannot be empty, please enter intern's school.`);
                 };
@@ -154,6 +151,10 @@ async function init() {
     const teamHtml = generateHtml(employeeHtml, teamNameObj.teamName);
 
     const fileNameObj = await getFileName();
+
+    if (!fs.existsSync("./output")) {
+        fs.mkdirSync("./output");
+    };
 
     await writeFileAsync(`./output/${fileNameObj.fileName}.html`, teamHtml);
     console.log('Finished creating HTML file!');
