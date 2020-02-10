@@ -1,4 +1,16 @@
 # roster-generator
+
+## Table of contents
+
+- [Overview](#overview)
+- [Instruction](#instruction)
+- [User Input Criterion](#user-input-criterion)
+- [Technologies](#technologies)
+- [CSS Frameworks](#css-frameworks)
+- [Node.js Modules](#node.js-modules)
+
+
+## Overview
 A command-line application that prompts the user for information about the team manager, members, then generates a roster in HTML.
 
 ## Instruction
@@ -49,3 +61,23 @@ A command-line application that prompts the user for information about the team 
     <img src="https://github.com/phaggio/roster-generator/blob/master/images/10.png?raw=true" alt="10" width="500">
 
 
+## User Input Criterion
+User's inputs are tested to ensure they meet the following requirement:
+* employee name cannot be empty and cannot contain numbers
+* employee ID cannot be empty, cannot contain any special characters, and it has to be one continuous string (no space between)
+* employee's email will need to be in a valid e-mail format (sample@sample.com)
+* team's name cannot be empty
+
+You may also input the command `npm run test` in the terminal to see the tests
+
+## Technologies
+* HTML
+* Javascript
+
+## CSS Frameworks
+* Bootstrap
+
+## Node.js Modules
+* inquirer
+* jest
+* open
