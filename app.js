@@ -134,38 +134,43 @@ async function getOpenFileRes() {
 };
 
 async function init() {
-    let addEmployee = true;
-    let employeeObjArr = [];
-    while (addEmployee) {
-        employeeObjArr.push(await getEmployeeObj());
-        addEmployee = await addMoreEmployee();
+    try {
+        let addEmployee = true;
+        let employeeObjArr = [];
+        while (addEmployee) {
+            employeeObjArr.push(await getEmployeeObj());
+            addEmployee = await addMoreEmployee();
+        };
+
+        let employeeHtml = '';
+        for (const employee of employeeObjArr) {
+            employeeHtml += generateCardHtml(employee);;
+        };
+
+        const teamNameObj = await getTeamName();
+        const teamHtml = generateHtml(employeeHtml, teamNameObj.teamName);
+
+        const fileNameObj = await getFileName();
+
+        if (!fs.existsSync("./output")) {
+            fs.mkdirSync("./output");
+        };
+
+        await writeFileAsync(`./output/${fileNameObj.fileName}.html`, teamHtml);
+        console.log('Finished creating HTML file!');
+
+        const openFileResObj = await getOpenFileRes();
+
+        if (openFileResObj.open === "Yes") {
+            console.log(`Opening ${fileNameObj.fileName}.html ...`);
+            open(`./output/${fileNameObj.fileName}.html`);
+        };
+
+        process.exit();
+
+    } catch (err) {
+        console.log(err)
     };
-
-    let employeeHtml = '';
-    for (const employee of employeeObjArr) {
-        employeeHtml += generateCardHtml(employee);;
-    };
-
-    const teamNameObj = await getTeamName();
-    const teamHtml = generateHtml(employeeHtml, teamNameObj.teamName);
-
-    const fileNameObj = await getFileName();
-
-    if (!fs.existsSync("./output")) {
-        fs.mkdirSync("./output");
-    };
-
-    await writeFileAsync(`./output/${fileNameObj.fileName}.html`, teamHtml);
-    console.log('Finished creating HTML file!');
-
-    const openFileResObj = await getOpenFileRes();
-
-    if (openFileResObj.open === "Yes") {
-        console.log(`Opening ${fileNameObj.fileName}.html ...`);
-        open(`./output/${fileNameObj.fileName}.html`);
-    };
-
-    process.exit();
 };
 
 
