@@ -8,12 +8,19 @@ A command-line application that prompts the user for information about the team 
 
     `npm i`
 1. once dependencies are downloaded, enter the following to run the app:
-
-    `npm run app`
-    ![img](https://github.com/phaggio/roster-generator/blob/master/images/01.png?raw=true)
+    <img src="https://github.com/phaggio/roster-generator/blob/master/images/01.png?raw=true" alt="01" width="400">
 
 1. the app starts by asking employee's name
-<img src="https://github.com/phaggio/roster-generator/blob/master/images/02.png?raw=true" alt="02" width="250">
+    <img src="https://github.com/phaggio/roster-generator/blob/master/images/02.png?raw=true" alt="02" width="500">
 
-1. then the app prompts user for that employee's ID
-<img src="https://github.com/phaggio/roster-generator/blob/master/images/03.png?raw=true" alt="03" width="250">
+1. the app prompts user for that employee's ID
+    <img src="https://github.com/phaggio/roster-generator/blob/master/images/03.png?raw=true" alt="03" width="500">
+
+1. the app prompts user for that employee's email address
+    <img src="https://github.com/phaggio/roster-generator/blob/master/images/04.png?raw=true" alt="04" width="500">
+
+1. the app prompts user for that employee's role
+    <img src="https://github.com/phaggio/roster-generator/blob/master/images/05.png?raw=true" alt="05" width="500">
+
+1. depending on that employee's role, the app prompts user for role specific information
+    <img src="https://github.com/phaggio/roster-generator/blob/master/images/06.png?raw=true" alt="06" width="500">
